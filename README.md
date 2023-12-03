@@ -42,7 +42,38 @@ Out of these **5000 samples**, we divided them into **4000 for training**, **500
 
 ## Import your dataset using fiftyone
 ```
-pip install fiftyone
+!pip install fiftyone
+!pip install fiftyone-db-ubuntu2204
 
+!wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/transforms.py
+!wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/engine.py
+!wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/utils.py
+!wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/coco_eval.py
+!wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/coco_utils.py
 ```
+
+Use FiftyOne to Import the COCO Dataset
+You can use a Python script to import the COCO 2017 dataset into FiftyOne. 
+Here is an example code to import the dataset:
+```
+import fiftyone as fo
+import fiftyone.zoo as foz
+
+# Load the COCO-2017 dataset
+# This will download it from the FiftyOne Dataset Zoo if necessary
+dataset = foz.load_zoo_dataset("coco-2017", split="train", label_types=["detections"], classes=["person"], max_samples=4000)
+dataset_test = foz.load_zoo_dataset("coco-2017", split="validation", label_types=["detections"], classes=["person"], max_samples=500)
+
+# Print summary information about the view
+print(dataset)
+```
+
+## Dependencies
+
+Following Python libraries installed:
+
+* Basic Libraries: [NumPy](http://www.numpy.org/), [Matplotlib](http://matplotlib.org/), [Pandas](https://pandas.pydata.org/), [Sklearn](https://scikit-learn.org/)
+* Deep-learning Frameworks: [Keras](https://keras.io/), [PyTorch](https://pytorch.org/), [Ultralytics](https://www.ultralytics.com/)
+
+📨 That's all, for any discussion kindly contact me here: ramadhanfitrah2@gmail.com
 
